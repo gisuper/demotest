@@ -1,5 +1,7 @@
 package com.example.demo.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "category_")
+@JsonIgnoreProperties({ "handler","hibernateLazyInitializer" })
 public class Category {
 
     @Id
@@ -34,5 +37,8 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
-
+    @Override
+    public String toString() {
+        return "Category [id=" + id + ", name=" + name + "]";
+    }
 }
